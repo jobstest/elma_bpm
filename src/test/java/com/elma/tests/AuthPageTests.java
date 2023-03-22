@@ -3,8 +3,10 @@ package com.elma.tests;
 import com.elma.pages.AuthFormPage;
 import com.elma.pages.MainFormPage;
 import com.github.javafaker.Faker;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("Класс аутентификации на странице")
 public class AuthPageTests extends BaseTests{
     AuthFormPage authFormPage = new AuthFormPage();
     MainFormPage mainFormPage = new MainFormPage();
@@ -13,36 +15,43 @@ public class AuthPageTests extends BaseTests{
     String password = faker.internet().password();
 
     @Test
+    @DisplayName("Aутентификация c корректными логином и паролем")
     void authWithCorrectLoginAndPassword() {
-        authFormPage.setLogin("admin")
-                .setPassword("1")
+        authFormPage.setLoginAndPassword("admin", "1")
                 .clickLogInButton();
         mainFormPage.checkWelcome("Добро пожаловать в систему ELMA!");
     }
 
     @Test
+    @DisplayName("Aутентификация c некорректным логином")
     void authWithIncorrectLogin() {
-        authFormPage.setLogin(login)
-                .setPassword("1")
+        authFormPage.setLoginAndPassword(login, "1")
                 .clickLogInButton()
                 .checkErrorMessage("Неверное имя пользователя или пароль.");
 
     }
 
     @Test
+    @DisplayName("Aутентификация c некорректным паролем")
     void authWithIncorrectPassword() {
-        authFormPage.setLogin("admin")
-                .setPassword(password)
+        authFormPage.setLoginAndPassword("admin", password)
                 .clickLogInButton()
                 .checkErrorMessage("Неверное имя пользователя или пароль.");
 
     }
 
     @Test
+    @DisplayName("Aутентификация c некорректными логином и паролем")
     void authWithIncorrectLoginAndPassword() {
-        authFormPage.setLogin(login)
-                .setPassword(password)
+        authFormPage.setLoginAndPassword(login, password)
                 .clickLogInButton()
+                .checkErrorMessage("Неверное имя пользователя или пароль.");
+    }
+
+    @Test
+    @DisplayName("Aутентификация c пустыми логином и паролем")
+    void authWithoutLoginAndPassword(){
+        authFormPage.clickLogInButton()
                 .checkErrorMessage("Неверное имя пользователя или пароль.");
     }
 }
