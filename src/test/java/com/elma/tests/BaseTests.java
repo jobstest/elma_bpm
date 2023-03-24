@@ -15,6 +15,7 @@ public class BaseTests {
     @BeforeAll
     static void setUp() {
         Configuration.browserSize = "1920x1080";
+        Configuration.browser = "Firefox";
     }
 
     @BeforeEach
