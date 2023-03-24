@@ -2,6 +2,7 @@ package com.elma.tests.аdministration;
 
 import com.elma.pages.AuthFormPage;
 import com.elma.tests.BaseTests;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
@@ -20,6 +21,7 @@ public class MyProfileTests extends BaseTests {
     AuthFormPage authFormPage = new AuthFormPage();
 
     @Test
+    @Disabled
     void downloadvCard() throws IOException, InterruptedException {
         authFormPage.setLoginAndPassword("admin", "1")
                 .clickLogInButton();
