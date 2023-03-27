@@ -16,7 +16,6 @@ public class BaseTests {
 
         Configuration.baseUrl = "http://192.168.0.90:7000";
         Configuration.browserSize = "1920x1080";
-        //Configuration.browser = "chrome";
         //Configuration.remote = "http://192.168.0.90:4444/wd/hub";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
