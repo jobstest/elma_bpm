@@ -26,7 +26,6 @@ public class AuthPageTests extends BaseTests {
     @Test
     @DisplayName("Aутентификация c корректными логином и паролем")
     void authWithCorrectLoginAndPassword() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
 
         authFormPage.openLogOnPage("/Security/Account/LogOn")
                 .setLoginAndPassword("admin", "1")
@@ -38,53 +37,44 @@ public class AuthPageTests extends BaseTests {
                 "html",
                 WebDriverRunner.getWebDriver().getPageSource().getBytes(StandardCharsets.UTF_8)
         );*/
-        attachScreenshot();
     }
 
     @Test
     @DisplayName("Aутентификация c некорректным логином")
     void authWithIncorrectLogin() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
 
         authFormPage.openLogOnPage("/Security/Account/LogOn")
                 .setLoginAndPassword(login, "1")
                 .clickLogInButton()
                 .checkErrorMessage("Неверное имя пользователя или пароль.");
-        attachScreenshot();
     }
 
     @Test
     @DisplayName("Aутентификация c некорректным паролем")
     void authWithIncorrectPassword() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
 
         authFormPage.openLogOnPage("/Security/Account/LogOn")
                 .setLoginAndPassword("admin", password)
                 .clickLogInButton()
                 .checkErrorMessage("Неверное имя пользователя или пароль.");
-        attachScreenshot();
     }
 
     @Test
     @DisplayName("Aутентификация c некорректными логином и паролем")
     void authWithIncorrectLoginAndPassword() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
 
         authFormPage.openLogOnPage("/Security/Account/LogOn")
                 .setLoginAndPassword(login, password)
                 .clickLogInButton()
                 .checkErrorMessage("Неверное имя пользователя или пароль.");
-        attachScreenshot();
     }
 
     @Test
     @DisplayName("Aутентификация c пустыми логином и паролем")
     void authWithoutLoginAndPassword() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
 
         authFormPage.openLogOnPage("/Security/Account/LogOn")
                 .clickLogInButton()
                 .checkErrorMessage("Неверное имя пользователя или пароль.");
-        attachScreenshot();
     }
 }
