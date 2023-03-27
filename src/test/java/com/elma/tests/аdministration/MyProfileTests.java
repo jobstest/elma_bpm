@@ -1,6 +1,6 @@
 package com.elma.tests.аdministration;
 
-import com.elma.pages.AuthFormPage;
+import com.elma.tests.pages.AuthFormPage;
 import com.elma.tests.BaseTests;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

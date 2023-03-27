@@ -1,4 +1,4 @@
-package com.elma.pages;
+package com.elma.tests.pages;
 
 import com.codeborne.selenide.SelenideElement;
 

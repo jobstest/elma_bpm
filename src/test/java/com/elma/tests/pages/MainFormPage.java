@@ -1,10 +1,6 @@
-package com.elma.pages;
+package com.elma.tests.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.WebDriverRunner;
-import io.qameta.allure.Allure;
-
-import java.nio.charset.StandardCharsets;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
