@@ -2,20 +2,21 @@ package com.elma.tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
-import io.qameta.allure.Attachment;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import com.elma.helpers.Attach;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-
-import static com.codeborne.selenide.Selenide.open;
 
 public class BaseTests {
     @BeforeAll
     static void setUp() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+
         Configuration.browserSize = "1920x1080";
-        Configuration.browser = "Firefox";
+        //Configuration.remote = "http://localhost:8080/#/";
+
     }
 
     @BeforeEach
@@ -24,12 +25,11 @@ public class BaseTests {
     }
 
     @AfterEach
-    void closeElma() {
+    void addAttchments() {
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
         WebDriverRunner.closeWindow();
     }
 
-    @Attachment(value = "Скриншот", type = "image/png", fileExtension = "png")
-    public byte[] attachScreenshot() {
-        return ((TakesScreenshot)WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
-    }
 }
