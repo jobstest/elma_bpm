@@ -106,9 +106,9 @@ test {
     useJUnitPlatform()
 }
 
-/*task practice_form_tests(type: Test) {
+task elma_bpm_auth(type: Test) {
     useJUnitPlatform {
-        includeTags "practice_form"
-        excludeTags "simple"
+        includeTags "auth"
+        //excludeTags "simple"
     }
-}*/
+}
