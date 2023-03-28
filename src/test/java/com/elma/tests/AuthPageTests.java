@@ -1,6 +1,7 @@
 package com.elma.tests;
 
 import com.elma.config.CredentialsConfig;
+import com.elma.config.WebDriverProvider;
 import com.elma.tests.pages.AuthFormPage;
 import com.elma.tests.pages.MainFormPage;
 import com.github.javafaker.Faker;
@@ -9,6 +10,7 @@ import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
 
 @Owner("parfionov")
 @Severity(SeverityLevel.BLOCKER)
@@ -17,6 +19,8 @@ import org.junit.jupiter.api.Test;
 @DisplayName("Аутентификация на странице")
 @Tag("auth")
 public class AuthPageTests extends BaseTests {
+
+    //private WebDriver driver = new WebDriverProvider().get();
     CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
     AuthFormPage authFormPage = new AuthFormPage();
     MainFormPage mainFormPage = new MainFormPage();
@@ -25,6 +29,8 @@ public class AuthPageTests extends BaseTests {
     String password = faker.internet().password();
     String correctlogin = config.correctlogin();
     String correctpassword = config.correctpassword();
+
+
 
     @Test
     @DisplayName("Aутентификация c корректными логином и паролем")
